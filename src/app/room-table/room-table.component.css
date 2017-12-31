@@ -17,3 +17,9 @@
   .mat-row:hover {
     cursor: pointer;
   }
+
+  .add-item {
+    position: absolute;
+    right: 10px;
+    top: 40px;
+  }

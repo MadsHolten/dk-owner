@@ -13,7 +13,8 @@ import { MatButtonModule,
          MatInputModule,
          MatFormFieldModule,
          MatCardModule,
-         MatPaginatorModule } from '@angular/material';
+         MatPaginatorModule,
+         MatIconModule } from '@angular/material';
 
 // Flex layout
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -43,6 +44,7 @@ import { RoomDetailsComponent } from './room-table/room-details/room-details.com
     MatFormFieldModule,
     MatCardModule,
     MatPaginatorModule,
+    MatIconModule,
     FlexLayoutModule
   ],
   providers: [],
