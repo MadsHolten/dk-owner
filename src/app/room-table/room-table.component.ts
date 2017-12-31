@@ -45,10 +45,24 @@ export class RoomTableComponent implements OnInit {
     } else {
       const container = this.rowContainers.toArray()[index];
       const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(RoomDetailsComponent);
-      const inlineComponent = container.createComponent(factory);
+      const detailComponent = container.createComponent(factory);
 
-      inlineComponent.instance.URI = this.dataSource.data[index].uri;
+      detailComponent.instance.URI = this.dataSource.data[index].uri;
       this.expandedRow = index;
+
+      // Subscribe to changes in details component
+      detailComponent.instance.delete.subscribe(del => {
+        // Remove row if delete is true
+        if(del == true){
+          // Remove row
+          this.dataSource.data.splice(index, 1);
+
+          // Should then remove it from the triplestore and if something fails, reinsert the item
+
+          // Refresh data
+          this.dataSource.paginator = this.paginator;
+        }
+      });
     }
   }
 

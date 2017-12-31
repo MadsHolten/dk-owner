@@ -1,1 +1,11 @@
-<p>Here comes some data for URI: {{URI}}</p>
+<div containerX>
+    <div fxLayout="row">
+        <p>Here comes some data for URI: {{URI}}</p>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <button mat-raised-button>Add property</button>
+        <span fxFlex="5%"></span>
+        <button mat-raised-button color="warn" (click)="deleteItem()">Delete</button>
+    </div>
+</div>

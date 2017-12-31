@@ -15,6 +15,9 @@ import { MatButtonModule,
          MatCardModule,
          MatPaginatorModule } from '@angular/material';
 
+// Flex layout
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 import { AppComponent } from './app.component';
 import { RoomTableComponent } from './room-table/room-table.component';
@@ -39,7 +42,8 @@ import { RoomDetailsComponent } from './room-table/room-details/room-details.com
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],

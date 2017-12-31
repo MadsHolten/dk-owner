@@ -6,3 +6,8 @@
     font-weight: bold;
     background: #e3f3f1;
 }
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

@@ -1,5 +1,5 @@
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'room-details',
@@ -8,4 +8,10 @@ import { Component, Input } from '@angular/core';
   })
   export class RoomDetailsComponent {
     @Input() URI: string;
+    @Output() delete = new EventEmitter();
+
+    deleteItem(){
+      // Emit event "true"
+      this.delete.emit(true);
+    }
   }
