@@ -1,0 +1,8 @@
+:host {
+    display: flex;
+    place-content: center;
+    padding: 24px;
+    color: #555555;
+    font-weight: bold;
+    background: #e3f3f1;
+}

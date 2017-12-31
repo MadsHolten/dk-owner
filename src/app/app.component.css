@@ -1,0 +1,12 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+.full-width{
+    width: 100%;
+}
+.endpoint-header{
+    min-height: 64px;
+    padding: 8px 24px 0;
+}

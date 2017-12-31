@@ -1,18 +1,48 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+// Animations
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Angular Material
+import { MatButtonModule, 
+         MatCheckboxModule,
+         MatTableModule,
+         MatSortModule,
+         MatInputModule,
+         MatFormFieldModule,
+         MatCardModule,
+         MatPaginatorModule } from '@angular/material';
 
 
 import { AppComponent } from './app.component';
+import { RoomTableComponent } from './room-table/room-table.component';
+import { RoomDetailsComponent } from './room-table/room-details/room-details.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RoomTableComponent,
+    RoomDetailsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatTableModule,
+    MatSortModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatPaginatorModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [RoomDetailsComponent]
 })
 export class AppModule { }
