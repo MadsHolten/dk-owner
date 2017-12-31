@@ -1,27 +1,39 @@
 # OwnerApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+[Demo](https://MadsHolten.github.io/dk-owner/)
 
-## Development server
+This is just a demo of how a very simple UI for establishing a BOT-based owner's requirement dataset could look like.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The overall idea is the following:
 
-## Code scaffolding
+1. Owner creates a set of bot:Spaces and attaches general requirements to them.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+   Instances:
+   bot:Space
+      Properties: required area, indoor climate class, occupants, equipment load
 
-## Build
+2. Architect starts volume studies and linkes the volumes to one or more of the bot:Spaces in the owner's requirements model. At this point some building elements exist, and the engineers can start doing initial assessments of the technical design aspects.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+   Instances:
+   bot:Space (linked to owner's instances with owl:sameAs??)
+      Properties: actual area and volume, geometrical properties
+   bot:Element
+      Properties: look and feel (texture etc.), geometrical properties
 
-## Running unit tests
+3. HVAC engineer attaches technical properties to spaces and elements and generates interfaces between spaces and elements to quantify heat transmission areas. When the necessary inputs are given, the static heat loss for all rooms can be inferred for further use.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   Instances:
+   bot:Space (linked to owner's and architect's instances with owl:sameAs??)
+      Properties: heating system design temperature, heating demand
+   bot:Element (linked to owner's and architect's instances with owl:sameAs??)
+      Properties: required U-value (will change to actual as design progresses)
+   bot:Interface
+      Properties: heat transmission area, heat transmission length, surface resistance
 
-## Running end-to-end tests
+4. HVAC engineer designs radiators and heating system.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+   Instances:
+   bot:Element
+      Properties: required power, required flow, part of which flow system?
+   fso:FlowSystem
+      Properties: total flow, total power
