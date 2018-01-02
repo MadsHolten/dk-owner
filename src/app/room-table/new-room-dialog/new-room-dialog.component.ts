@@ -21,9 +21,10 @@ export class NewRoomDialogComponent implements OnInit {
 
   public roomForm: FormGroup;
   private existingIds: string[] = [];
-  private existingIdsFiltered: Observable<string[]>;
+  public existingIdsFiltered: Observable<string[]>;
   private existingTypes: string[] = [];
-  private existingTypesFiltered: Observable<string[]>;
+  public existingTypesFiltered: Observable<string[]>;
+  private showPanel = false;
 
   constructor(
     private fb: FormBuilder,
@@ -69,8 +70,10 @@ export class NewRoomDialogComponent implements OnInit {
   }
 
   filter(val: string, list): string[] {
-    return list
-      .filter(option => option.toString().toLowerCase().indexOf(val.toString().toLowerCase()) === 0);
+    if(val){
+      return list
+        .filter(option => option.toString().toLowerCase().indexOf(val.toString().toLowerCase()) === 0);
+    }
   }
 
   onAreaChange(value){

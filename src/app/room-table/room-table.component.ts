@@ -43,24 +43,30 @@ export class RoomTableComponent implements OnInit {
 
   // Insertion of a new row with room details
   insertComponent(uri: string) {
-
     // Get index from the URI
     var uris = _.map(this.dataSource.data, x => x.uri);
     var index = uris.indexOf(uri);
 
-    if (this.expandedRow != null) {
-      // clear old content
-      this.rowContainers.toArray()[this.expandedRow].clear();
-    }
+    // Adjust index if using paginator
+    if(this.paginator){
+      var pageSize = this.paginator.pageSize;
+      var pageIndex = this.paginator.pageIndex;
+      var shiftFactor = pageSize*pageIndex;
+      index = index-shiftFactor;
+    };
+
+    // Close expanded
+    this.closeExpanded();
 
     if (this.expandedRow === index) {
       this.expandedRow = null;
     } else {
       const container = this.rowContainers.toArray()[index];
+      console.log(this.rowContainers.toArray());
       const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(RoomDetailsComponent);
       const detailComponent = container.createComponent(factory);
 
-      detailComponent.instance.URI = this.dataSource.data[index].uri;
+      detailComponent.instance.URI = uri;
       this.expandedRow = index;
 
       // Subscribe to changes in details component
@@ -76,6 +82,13 @@ export class RoomTableComponent implements OnInit {
           this.dataSource.paginator = this.paginator;
         }
       });
+    }
+  }
+
+  closeExpanded(){
+    if (this.expandedRow != null) {
+      // clear old content
+      this.rowContainers.toArray()[this.expandedRow].clear();
     }
   }
 
