@@ -1,0 +1,91 @@
+<h1 mat-dialog-title>Add room</h1>
+
+<form [formGroup]="roomForm" novalidate (ngSubmit)="onCloseConfirm(roomForm)">
+
+  <!-- Content -->
+  <div mat-dialog-content>
+    <div class="form-group">
+
+      <!-- ID FIELD -->
+      <mat-form-field type="text" class="full-width">
+
+          <!-- Input field -->
+          <input matInput placeholder="ID" formControlName="id" [matAutocomplete]="idSugg">
+
+          <!-- Auto complete -->
+          <mat-autocomplete #idSugg="matAutocomplete">
+            <mat-option *ngFor="let id of existingIdsFiltered | async" [value]="id">
+              {{ id }}
+            </mat-option>
+          </mat-autocomplete>
+
+          <!-- Required error -->
+          <mat-error *ngIf="roomForm.controls.id.errors && roomForm.controls.id.errors.required">
+              Required
+          </mat-error>
+
+          <!-- Unique error -->
+          <mat-error *ngIf="roomForm.controls.id.errors && roomForm.controls.id.errors.unique">
+              Must be unique
+          </mat-error>
+
+      </mat-form-field>
+
+      <!-- Name -->
+      <mat-form-field type="text" class="full-width">
+          <input matInput placeholder="Name" formControlName="name">
+
+          <!-- Required error -->
+          <mat-error *ngIf="roomForm.controls.name.errors && roomForm.controls.name.errors.required">
+              Required
+          </mat-error>
+
+      </mat-form-field>
+
+      <!-- TYPE FIELD -->
+      <mat-form-field type="text" class="full-width">
+
+          <!-- Input field -->
+          <input matInput placeholder="Type" formControlName="type" [matAutocomplete]="typeSugg">
+
+          <!-- Auto complete -->
+          <mat-autocomplete #typeSugg="matAutocomplete">
+            <mat-option *ngFor="let type of existingTypesFiltered | async" [value]="type">
+              {{ type }}
+            </mat-option>
+          </mat-autocomplete>
+
+          <!-- Required error -->
+          <mat-error *ngIf="roomForm.controls.type.errors && roomForm.controls.type.errors.required">
+              Required
+          </mat-error>
+
+      </mat-form-field>
+
+      <!-- AREA FIELD -->
+      <mat-form-field type="text" class="full-width">
+
+          <!-- Input field -->
+          <input matInput placeholder="Area" formControlName="area" (keyup)="onAreaChange(roomForm.controls.area.value)">
+          <span matSuffix>&nbsp; m&#178;</span>
+
+          <!-- NaN error -->
+          <mat-error *ngIf="roomForm.controls.area.errors && roomForm.controls.area.errors.nan">
+              Must be a number
+          </mat-error>
+
+          <!-- Negative number error -->
+          <mat-error *ngIf="roomForm.controls.area.errors && roomForm.controls.area.errors.positive">
+            Must be positive
+          </mat-error>
+
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCloseCancel()">Cancel</button>
+    <button mat-button type="submit">Create</button>
+  </div>
+</form>

@@ -14,22 +14,28 @@ import { MatButtonModule,
          MatFormFieldModule,
          MatCardModule,
          MatPaginatorModule,
-         MatIconModule } from '@angular/material';
+         MatIconModule,
+         MatDialogModule,
+         MatAutocompleteModule } from '@angular/material';
 
 // Flex layout
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 import { AppComponent } from './app.component';
+
+// Room table component
 import { RoomTableComponent } from './room-table/room-table.component';
 import { RoomDetailsComponent } from './room-table/room-details/room-details.component';
+import { NewRoomDialogComponent } from './room-table/new-room-dialog/new-room-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RoomTableComponent,
-    RoomDetailsComponent
+    RoomDetailsComponent,
+    NewRoomDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +51,12 @@ import { RoomDetailsComponent } from './room-table/room-details/room-details.com
     MatCardModule,
     MatPaginatorModule,
     MatIconModule,
+    MatDialogModule,
+    MatAutocompleteModule,
     FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [RoomDetailsComponent]
+  entryComponents: [RoomDetailsComponent,NewRoomDialogComponent]
 })
 export class AppModule { }

@@ -7,7 +7,7 @@
 
   <mat-table #table [dataSource]="dataSource" matSort>
 
-    <!-- Position Column -->
+    <!-- ID Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
@@ -19,21 +19,22 @@
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
+    <!-- Type Column -->
     <ng-container matColumnDef="type">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- Area Column -->
     <ng-container matColumnDef="area">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Area </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.area}} </mat-cell>
     </ng-container>
 
+    <!-- Expansion panel -->
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns; let index = index"
-      (click)="insertComponent(index)"
+    <mat-row *matRowDef="let row; columns: displayedColumns"
+      (click)="insertComponent(row.uri)"
       #tableRow
       matRipple></mat-row>
   </mat-table>
@@ -44,7 +45,7 @@
   </mat-paginator>
 
   <button class="add-item" mat-mini-fab>
-      <mat-icon>add</mat-icon>
+      <mat-icon (click)="addRoomDialog()">add</mat-icon>
   </button>
 
 
