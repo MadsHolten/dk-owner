@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// Local storage
+import { WebStorageModule } from 'ngx-store';
 
 // Animations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,12 +35,15 @@ import { RoomDetailsComponent } from './room-table/room-details/room-details.com
 import { NewRoomDialogComponent } from './room-table/new-room-dialog/new-room-dialog.component';
 import { RoomPropertyTableComponent } from './room-table/room-details/room-property-table/room-property-table.component';
 
+// Settings component
+import { SettingsComponent } from './settings/settings.component';
+
 // Pipes
 import { CDTUnitsPipe } from './pipes/cdt-units.pipe';
 
 // Dialogs
 import { ConfirmDialogComponent } from './dialogs/confirm-dialog.component';
-import { SettingsComponent } from './settings/settings.component';
+
 
 @NgModule({
   declarations: [
@@ -55,6 +61,7 @@ import { SettingsComponent } from './settings/settings.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    WebStorageModule,
     MatButtonModule,
     MatCheckboxModule,
     MatTableModule,

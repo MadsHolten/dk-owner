@@ -8,7 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class ConfirmDialogComponent {
 
-    private confirmDisabled: boolean = true;
+    public confirmDisabled: boolean = true;
     private value = '';
 
     constructor(

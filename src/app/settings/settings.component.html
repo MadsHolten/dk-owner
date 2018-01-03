@@ -15,13 +15,25 @@
 
     <!-- Open -->
     <mat-form-field class="full-width">
-      <input matInput type="text" placeholder="Project endpoint" value="http://172.16.10.122:5820/test">
+      <input matInput 
+        type="text" 
+        placeholder="Project endpoint" 
+        [(ngModel)]="projectSettings.endpoint" 
+        (input)="onDataChange()">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput type="text" placeholder="Username" value="admin">
+      <input matInput 
+        type="text" 
+        placeholder="Username" 
+        [(ngModel)]="projectSettings.username" 
+        (input)="onDataChange()">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput type="password" placeholder="Password" value="admin">
+      <input matInput 
+        type="password" 
+        placeholder="Password"
+        [(ngModel)]="projectSettings.password" 
+        (input)="onDataChange()">
     </mat-form-field>
 
   </mat-expansion-panel>
