@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+
+<div mat-dialog-content>
+    {{data.message}}
+    <!-- Validation text field -->
+    <div *ngIf="data.validationText">
+        <mat-form-field class="full-width">
+            <input matInput type="text" placeholder="Validation text" [(ngModel)]="value" (input)="evaluateInput()"/>
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+</div>
+
+<!-- Actions -->
+<div mat-dialog-actions>
+    <button mat-button (click)="onCloseCancel()">{{data.cancelText}}</button>
+    <button mat-button (click)="onCloseConfirm()" color="warn" [disabled]="confirmDisabled">{{data.confirmText}}</button>
+</div>

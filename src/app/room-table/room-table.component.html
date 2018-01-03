@@ -28,24 +28,28 @@
     <!-- Area Column -->
     <ng-container matColumnDef="area">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Area </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.area}} </mat-cell>
+      <mat-cell *matCellDef="let element"> <span [innerHTML]="element.area | cdt"></span> </mat-cell>
     </ng-container>
 
-    <!-- Expansion panel -->
+    <!-- Display rows -->
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"
-      (click)="insertComponent(row.uri)"
+      (click)="expandRow(row.uri)"
+      (mouseover)="displayEditTools(row.uri)"
       #tableRow
       matRipple></mat-row>
   </mat-table>
 
+  <!-- Paginator -->
   <mat-paginator #paginator
     [pageSize]="10"
     [pageSizeOptions]="[5, 10, 20]"
     (page)="closeExpanded()">
   </mat-paginator>
 
-  <button class="add-item" mat-mini-fab>
+  <!-- Add room FAB -->
+  <!-- Only visible when row not expanded -->
+  <button *ngIf="expandedRow == null" class="add-item" mat-mini-fab>
       <mat-icon (click)="addRoomDialog()">add</mat-icon>
   </button>
 

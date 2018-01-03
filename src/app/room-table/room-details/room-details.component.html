@@ -1,11 +1,19 @@
-<div containerX>
-    <div fxLayout="row">
-        <p>Here comes some data for URI: {{URI}}</p>
-    </div>
+<div containerX class="container mat-elevation-z3">
+    
+    <!-- Add property FAB -->
+    <button class="add-property" mat-mini-fab>
+        <mat-icon (click)="console.log('add')">add</mat-icon>
+    </button>
 
-    <div fxLayout="row" fxLayoutAlign="start center">
-        <button mat-raised-button>Add property</button>
-        <span fxFlex="5%"></span>
-        <button mat-raised-button color="warn" (click)="deleteItem()">Delete</button>
-    </div>
+    <!-- Header -->
+    <mat-toolbar class="header">
+        <span>Properties</span>
+        <span class="fill"></span>
+        <span>{{URI}}</span>
+        <mat-icon class="delete-icon" (click)="deleteRoomDialog()">delete</mat-icon>
+    </mat-toolbar>
+    
+    
+    <room-property-table></room-property-table>
+
 </div>

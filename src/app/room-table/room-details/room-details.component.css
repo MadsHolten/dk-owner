@@ -1,13 +1,41 @@
-:host {
+/* :host {
     display: flex;
     place-content: center;
     padding: 24px;
     color: #555555;
-    font-weight: bold;
     background: #e3f3f1;
-}
+} */
 .row {
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+.container {
+    position: relative;
+    background: #ffffff;
+    margin: 10px 5px 10px 5px;
+    padding: 5px 5px 20px 5px;
+}
+.add-property {
+    position: absolute;
+    right: 15px;
+    top: 105px;
+    z-index: 5;
+}
+.header {
+    padding: 10px 25px 10px 25px;
+    color: #ffffff;
+    background: #36706b;
+    font-size: 14px;
+}
+.fill {
+    flex: 1 1 auto;
+}
+.delete-icon {
+    cursor: pointer;
+    padding: 0 10px;
+    color: #c9e9e6;
+}
+.delete-icon:hover {
+    color: #ffffff;
 }

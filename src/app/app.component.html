@@ -1,24 +1,24 @@
-<div class="example-container mat-elevation-z3">
-  <mat-card class="mat-elevation-z0">
-      <mat-card-header class="header-bg">
-        <mat-card-title>Triplestore</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="endpoint-header">
-          <form>
-            <mat-form-field class="full-width">
-              <input matInput placeholder="Project endpoint" value="http://172.16.10.122:5820/test">
-            </mat-form-field>
-          </form>
-        </div>
-      </mat-card-content>
-  </mat-card>
-  <mat-card class="mat-elevation-z0">
-      <mat-card-header class="header-bg">
-        <mat-card-title>Room data</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-          <room-table></room-table>
-      </mat-card-content>
-  </mat-card>
-</div>
+
+<mat-card class="mat-elevation-z2">
+
+    <!-- Triplestore header -->
+    <mat-toolbar class="header">
+        <span>Settings</span>
+    </mat-toolbar>
+
+    <app-settings></app-settings>
+
+</mat-card>
+
+<mat-card class="mat-elevation-z2">
+    <!-- Room data header -->
+    <mat-toolbar class="header">
+        <span>Room data</span>
+    </mat-toolbar>
+
+    <mat-card-content>
+      <!-- ROOM TABLE -->
+      <room-table></room-table>
+    </mat-card-content>
+
+</mat-card>

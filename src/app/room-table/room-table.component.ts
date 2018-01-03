@@ -42,7 +42,7 @@ export class RoomTableComponent implements OnInit {
   }
 
   // Insertion of a new row with room details
-  insertComponent(uri: string) {
+  expandRow(uri: string) {
     // Get index from the URI
     var uris = _.map(this.dataSource.data, x => x.uri);
     var index = uris.indexOf(uri);
@@ -62,7 +62,6 @@ export class RoomTableComponent implements OnInit {
       this.expandedRow = null;
     } else {
       const container = this.rowContainers.toArray()[index];
-      console.log(this.rowContainers.toArray());
       const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(RoomDetailsComponent);
       const detailComponent = container.createComponent(factory);
 
@@ -83,6 +82,10 @@ export class RoomTableComponent implements OnInit {
         }
       });
     }
+  }
+
+  displayEditTools(ev){
+    // console.log(ev);
   }
 
   closeExpanded(){
@@ -112,6 +115,10 @@ export class RoomTableComponent implements OnInit {
     });
   }
 
+  log(ev){
+    console.log(ev);
+  }
+
   private createURI(){
     function pad(n, width, z?) {
       z = z || '0';
@@ -130,7 +137,7 @@ export class RoomTableComponent implements OnInit {
       .reduce((a,b) => Math.max(a, b))
       .value()+1;
     
-    var newIndex = pad(newMax,3);
+    var newIndex = pad(newMax,decimals);
 
     return namespace+newIndex;
   }

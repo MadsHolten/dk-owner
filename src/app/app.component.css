@@ -10,3 +10,10 @@
     min-height: 64px;
     padding: 8px 24px 0;
 }
+.header{
+    background: #36706b;
+    color: #ffffff;
+}
+.mat-card{
+    margin-bottom: 10px;
+}

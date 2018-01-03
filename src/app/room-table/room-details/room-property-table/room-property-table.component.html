@@ -1,0 +1,29 @@
+<div class="filter-header">
+    <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+</div>
+
+<mat-table #table [dataSource]="dataSource">
+
+    <!-- Key Column -->
+    <ng-container matColumnDef="key">
+    <mat-header-cell *matHeaderCellDef> Key </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.key}} </mat-cell>
+    </ng-container>
+
+    <!-- Label Column -->
+    <ng-container matColumnDef="label">
+    <mat-header-cell *matHeaderCellDef> Label </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.label}} </mat-cell>
+    </ng-container>
+
+    <!-- Value Column -->
+    <ng-container matColumnDef="value">
+    <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
+    <mat-cell *matCellDef="let element"> <span [innerHTML]="element.value | cdt"></span> </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

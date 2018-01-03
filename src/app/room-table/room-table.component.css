@@ -20,6 +20,11 @@
 
   .add-item {
     position: absolute;
+    right: 15px;
+    top: 125px;
+  }
+
+  .edit-item {
+    position: absolute;
     right: 10px;
-    top: 40px;
   }
