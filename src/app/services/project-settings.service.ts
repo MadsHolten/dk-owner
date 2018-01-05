@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'ngx-store';
+import { HttpClient }   from '@angular/common/http';
 
 // Interface
 import { ProjectSettings } from '../settings/settings.component';
@@ -7,8 +8,10 @@ import { ProjectSettings } from '../settings/settings.component';
 @Injectable()
 export class ProjectSettingsService {
 
+  public endpointSettings: ProjectSettings;
+
   constructor(
-    private lss: LocalStorageService
+    public lss: LocalStorageService
   ) { }
 
   public saveTriplestoreSettings(object: ProjectSettings) {
@@ -18,7 +21,8 @@ export class ProjectSettingsService {
 
   public getTriplestoreSettings() {
     // Get object from {prefix}endpointSettings
-    return this.lss.get('endpointSettings');
+    this.endpointSettings = this.lss.get('endpointSettings');
+    return this.endpointSettings;
   }
 
 }

@@ -5,6 +5,7 @@ import { ProjectSettingsService } from '../services/project-settings.service';
 
 export interface ProjectSettings {
   endpoint: string;
+  namedGraph?: string;
   username?: string;
   password?: string;
 }

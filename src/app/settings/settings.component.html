@@ -16,11 +16,20 @@
     <!-- Open -->
     <mat-form-field class="full-width">
       <input matInput 
-        type="text" 
+        type="text"
         placeholder="Project endpoint" 
         [(ngModel)]="projectSettings.endpoint" 
         (input)="onDataChange()">
     </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput 
+        type="text"
+        placeholder="Named graph" 
+        [(ngModel)]="projectSettings.namedGraph" 
+        (input)="onDataChange()">
+    </mat-form-field>
+
     <mat-form-field class="full-width">
       <input matInput 
         type="text" 
@@ -28,6 +37,7 @@
         [(ngModel)]="projectSettings.username" 
         (input)="onDataChange()">
     </mat-form-field>
+    
     <mat-form-field class="full-width">
       <input matInput 
         type="password" 

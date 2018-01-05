@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
+// Interceptor
+import { AuthInterceptor } from './services/auth.interceptor';
 
 // Local storage
 import { WebStorageModule } from 'ngx-store';
@@ -60,6 +64,7 @@ import { ConfirmDialogComponent } from './dialogs/confirm-dialog.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     WebStorageModule,
     MatButtonModule,
@@ -77,7 +82,13 @@ import { ConfirmDialogComponent } from './dialogs/confirm-dialog.component';
     MatExpansionModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi   : true,
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [RoomDetailsComponent,NewRoomDialogComponent,ConfirmDialogComponent]
 })
