@@ -32,7 +32,25 @@ export class RoomsService  extends TriplestoreService {
         }
         `;
 
-        return this.updateQuery(q);            
+        // var q2 = `
+        // PREFIX bot: <https://w3id.org/bot#>
+        // PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        // PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+        // PREFIX prop:<https://w3id.org/prop#>
+        // INSERT DATA
+        // {
+        //   GRAPH <${g}> { 
+        //       <${uri}> a bot:Space ;
+        //         rdfs:label "${name}"^^xsd:string ;
+        //         prop:id "${id}"^^xsd:string ;
+        //         prop:type <${typeURI}> .`
+        // if(area) q+= `<${typeURI}> prop:area "${area}"^^xsd:string .`
+        // q+= `
+        //   }
+        // }
+        // `;
+
+        return this.updateQuery(q);
     }
 
     public getRoomsSingle(data){
@@ -44,6 +62,19 @@ export class RoomsService  extends TriplestoreService {
         `;
 
         return this.getQuery(q);
+    }
+
+    public getSomeConstruct(data){
+        var q = `
+        CONSTRUCT {
+            ?s ?p ?o
+        }
+        {
+          GRAPH <http://example/bookStore> { ?s ?p ?o }
+        }
+        `;
+
+        return this.getQuery(q, false, 'construct');
     }
 
 }

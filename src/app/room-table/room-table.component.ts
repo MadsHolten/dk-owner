@@ -33,6 +33,14 @@ export class RoomTableComponent implements OnInit {
         console.log(err);
       });
 
+    // SomeStuff
+    this.rs.getSomeConstruct('data')
+      .subscribe(res => {
+        console.log(res);
+      }, err => {
+        console.log(err);
+      });
+
     // // Get query
     // this.tss.getQuery("SELECT * WHERE {?s ?p ?o}")
     //     .subscribe(res => {

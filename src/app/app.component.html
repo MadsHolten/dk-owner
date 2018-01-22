@@ -1,24 +1,41 @@
+<div fxLayout="row">
 
-<mat-card class="mat-elevation-z2">
+    <!-- Left column -->
+    <div fxFlex="15"
+        fxFlex.xs="0"
+        fxFlex.sm="0">
+    </div>
 
-    <!-- Triplestore header -->
-    <mat-toolbar class="header">
-        <span>Settings</span>
-    </mat-toolbar>
+    <!-- Content -->
+    <div fxLayout="column" 
+        fxFlex="70"
+        fxFlex.xs="100"
+        fxFlex.sm="100">
 
-    <app-settings></app-settings>
+        <mat-card class="mat-elevation-z2">
 
-</mat-card>
+            <!-- Triplestore header -->
+            <mat-toolbar class="header">
+                <span>Settings</span>
+            </mat-toolbar>
 
-<mat-card class="mat-elevation-z2">
-    <!-- Room data header -->
-    <mat-toolbar class="header">
-        <span>Room data</span>
-    </mat-toolbar>
+            <app-settings></app-settings>
 
-    <mat-card-content>
-      <!-- ROOM TABLE -->
-      <room-table></room-table>
-    </mat-card-content>
+        </mat-card>
 
-</mat-card>
+        <mat-card class="mat-elevation-z2">
+            <!-- Room data header -->
+            <mat-toolbar class="header">
+                <span>Room data</span>
+            </mat-toolbar>
+
+            <mat-card-content>
+            <!-- ROOM TABLE -->
+            <room-table></room-table>
+            </mat-card-content>
+
+        </mat-card>
+
+    </div>
+
+</div>

@@ -20,18 +20,31 @@ export class TriplestoreService  extends ProjectSettingsService {
     if(!this.endpoint.endsWith('/')) this.endpoint = this.endpoint+'/';
   }
 
-  public getQuery(query, reasoning?){
+  public getQuery(query, reasoning?, queryType?){
+
+    var options;
 
     // define search parameters
     var params = new HttpParams()
       .set('query', query);
+    
+    options = {params: params};
 
     // perform reasoning?
     if(reasoning){
       params.set('reasoning', 'true');
     }
 
-    return this.http.get(this.endpoint+'query', {params: params});
+    // query type
+    if(queryType == 'construct'){
+      var headers = new HttpHeaders()
+        .set('Accept', 'application/ld+json');
+      options = {params: params, headers: headers};
+    }
+
+    console.log(options);
+
+    return this.http.get(this.endpoint+'query', options);
 
   }
 
